@@ -1,13 +1,11 @@
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import "./App.css";
 import { notificationsAtom, totalNotificationsCount } from "./atom";
-import { useEffect } from "react";
-import axios from "axios";
+// import { useEffect } from "react";
 // import { useMemo } from "react";
 
 function App() {
-  const [notificationsCount, setNotificationsCount] =
-    useRecoilState(notificationsAtom);
+  const [notificationsCount, setNotificationsCount] = useRecoilState(notificationsAtom);
   const total = useRecoilValue(totalNotificationsCount);
 
   //method 1:
@@ -16,17 +14,15 @@ function App() {
   // }, [networkCount, jobsCount, messagingCount]);
 
   //async-query-bits
-  useEffect(() => {
-    // setTimeout(() => {
-  
-    // }, 5000);
-      axios
-        .get("https://practic-repo.onrender.com/notifications")
-        .then((res) => {
-          console.log(res.data);
-          setNotificationsCount(res.data);
-        });
-  }, []);
+  // useEffect(() => {
+  //   // setTimeout(() => {
+
+  //   // }, 5000);
+  //   axios.get("https://practic-repo.onrender.com/notifications").then((res) => {
+  //     console.log(res.data);
+  //     setNotificationsCount(res.data);
+  //   });
+  // }, []);
   return (
     <>
       <button>Home</button>

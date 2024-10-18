@@ -1,5 +1,6 @@
 // import { atom, selector } from "recoil";
 
+import axios from "axios";
 import { atom, selector } from "recoil";
 
 // export const jobsAtom = atom({
@@ -30,12 +31,16 @@ import { atom, selector } from "recoil";
 
 export const notificationsAtom = atom({
   key: "notificationsAtom",
-  default: {
-    notifications: 0,
-    jobs: 0,
-    network: 0,
-    messaging: 0,
-  },
+  default: selector({
+    key: "notificationSelectorAtom",
+    get: async () => {
+      await new Promise((r) => setTimeout(r, 1000));
+      const res = await axios.get(
+        "https://practic-repo.onrender.com/notifications"
+      );
+      return res.data;
+    },
+  }),
 });
 
 export const totalNotificationsCount = selector({
