@@ -34,7 +34,7 @@ export const notificationsAtom = atom({
   default: selector({
     key: "notificationSelectorAtom",
     get: async () => {
-      await new Promise((r) => setTimeout(r, 1000));
+      // await new Promise((r) => setTimeout(r, 1000));
       const res = await axios.get(
         "https://practic-repo.onrender.com/notifications"
       );
